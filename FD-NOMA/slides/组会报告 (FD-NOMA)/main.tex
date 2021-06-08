@@ -1,0 +1,252 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[english]{babel}
+\usepackage[fntef]{ctex} % invole CJKfntef
+\usepackage{hyperref}
+\usepackage{ctex}
+\input{chapters/preamble}
+\title{组会报告} %->->->->-> Check hyperref title <-<-<-<-<-
+\subtitle{论文复现: \href{https://ieeexplore.ieee.org/document/8306094}{On the Coexistence Between Full-Duplex and NOMA}}
+\author[Yong YANG]{Yong YANG}
+\institute[BUPT]{
+	Beijing University of Posts and Telecommunications\\
+	\url{https://bupt-yy.github.io/}
+} 
+\date{\today}
+
+\begin{document}
+	
+	\frame{\titlepage}
+	%\begin{frame}{目$\quad$次}
+	%\tableofcontents   
+    %\end{frame}
+
+\begin{frame}{\textbf{{\LARGE{S}}YSTEM {\LARGE{M}}ODEL}}
+	
+	\begin{columns}
+	\column{.35\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{images/fig1.pdf}
+		\caption{1}
+		\label{fig:fig1}
+	\end{figure}
+	
+	\column{.65\textwidth}
+	$1$个DL user位于$(-d_0,0)$, \\$M$个UL users均匀分布于$\mathrm{ann}(\text{BS},r_2,r_1;-\frac{\theta}{2},\frac{\theta}{2})$
+	
+	BS接收信号$y_{\text{BS}} = \sqrt{P_\text{U}}\sum_{m = 1}^{M}h_ms_m+h_{\text{SI}}\sqrt{P_{\text{SI}}}s_0+n_{\text{BS}}$.
+	
+	DL接收信号$y_{\text{D}}\,\, =  \sqrt{P_{\text{U}}}\sum_{m = 1}^M \,g_ms_m\,+h_0\sqrt{P_{\text{BS}}}s_0+n_{\text{D}}$.
+	\\[10pt]
+	模型假设: \begin{itemize}
+		\item UL users的发射功率$P_{\text{U}}$均相同, 
+		\item $h_{\text{SI}}\sim\mathcal{CN}(0,1)$,
+		\item $h_m\sim$ Rayleigh fading.
+	\end{itemize}
+	
+	
+	 
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{{\LARGE{P}}ERFORMANCE {\LARGE{A}}NALYSIS}}
+	
+	\begin{columns}
+		\column{.35\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=1\linewidth]{images/fig1.pdf}
+			\caption{1}
+			%\label{fig:fig1}
+		\end{figure}
+		
+		\column{.65\textwidth}
+		\begin{enumerate}
+			\item Uplink sum rates 
+			\begin{itemize}
+				\item  NOMA, FD
+			
+				\begin{equation}
+					R_{\text{FD}}^{\text{U}} = \log\left( 1 + \frac{\sum_{m = 1}^M P_{\text{U}}\left\vert h_m\right\vert^2}{ P_{\text{SI}}\left\vert h_{\text{SI}}\right\vert^2 + 1} \right),
+				\end{equation}
+				\item NOMA, HD
+				\begin{equation}
+					R_{\text{HD}}^{\text{U}} = \frac{1}{2}\log\left( 1 + \sum_{m=1}^MP_{\text{U}}\left\vert h_m \right\vert^2 \right),
+				\end{equation}
+				\item OMA,HD \begin{equation}
+						R_{\text{OMA}}^{\text{U}} = \frac{1}{2M}\sum_{m=1}^M \log\left( 1+P_\text{U}\left\vert h_m\right\vert^2 \right).
+					\end{equation}
+			\end{itemize}
+		\end{enumerate}
+		\end{columns}
+\end{frame}
+
+
+\begin{frame}{\textbf{{\LARGE{P}}ERFORMANCE {\LARGE{A}}NALYSIS}}
+	
+	\begin{columns}
+		\column{.35\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=1\linewidth]{images/fig1.pdf}
+			\caption{1}
+			%\label{fig:fig1}
+		\end{figure}
+		
+		\column{.65\textwidth}
+		\begin{enumerate}\setcounter{enumi}{1}
+			\item Downlink sum rates 
+			\begin{itemize}
+				\item  NOMA, FD
+				
+				\begin{equation}
+					R_{\text{FD}}^{\text{D}} = \log\left( 1 + \frac{P_{\text{BS}}\left\vert h_0\right\vert^2}{P_{\text{U}}\sum_{m=1}^M\left\vert g_m\right\vert^2+1}  \right),
+				\end{equation}
+				\item NOMA, HD
+				\begin{equation}
+					R_{\text{HD}}^{\text{D}} = \frac{1}{2}\log\left( 1 + P_{\text{BS}}\left\vert h_0 \right\vert^2 \right),
+				\end{equation}
+			\end{itemize}
+		\end{enumerate}
+
+		\begin{equation*}
+		\mathrm{distance}(\text{DL user}, \text{UL user}) \geqslant d_0.
+	\end{equation*}
+	
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/2.eps}
+		\caption{2.$\quad$ The uplink sum rates achieved by the three transmission schemes. Noise power of uplink transmission is $-61.5$dBm, $\alpha = 4$, $r_1 = 10$, $r_2 = 0$ and $\theta = \frac{\pi}{8}$.}
+		\label{fig:fig2}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\textbf{{\LARGE{M}}AIN {\LARGE{R}}ESULT}}
+	\begin{enumerate}
+		\item \(
+			\mathrm{Pr}^{\text{U}} \triangleq \mathrm{Pr}\left( R_{\text{FD}}^{\text{U}}\leqslant R_{\text{HD}}^{\text{U}}\right)
+		\): FD yields worse performance than HD (NOMA, uplink).\\
+		\begin{equation}
+			\mathrm{Pr}^{\text{U}}  = \mathrm{Pr}\left( \sum_{m=1}^M\left\vert h_m\right\vert^2 \leqslant\frac{P^2_{\text{SI}}y^2-1}{P_{\text{U}}} \right) \approx \cdots~\text{(Calculation)},
+		\end{equation}
+	其中$y\sim \mathcal{E}(1)$, $\left\vert h_m\right\vert^2$有分布函数: $F_{\left\vert h_m\right\vert^2}(t) = 1- \frac{2}{r_1^2-r_2^2}\int_{r^2}^{r_1}\mathrm{e}^{-r^\alpha t}r\mathrm{d}r$.
+		\item \(
+		\mathrm{Pr}^{\text{D}} \triangleq \mathrm{Pr}\left( R_{\text{FD}}^{\text{D}}\leqslant R_{\text{HD}}^{\text{D}}\right)
+		\): FD yields worse performance than HD (NOMA, downlink).\\
+			\begin{equation}
+				\mathrm{Pr}^{\text{D}} = \mathrm{Pr}\left( \left\vert h_0\right\vert^2\leqslant \frac{P_{\text{U}}^2z^2 - 1}{P_{\text{BS}}}  \right)\approx\cdots~\text{(Calculation)}.
+			\end{equation}
+		其中$z = \sum_{m=1}^M\left\vert g_m\right\vert^2$
+	\end{enumerate}
+\end{frame}
+	
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\linewidth]{images/3.eps}
+		\caption{3.$\quad$ The probability $P(R_{\text{FD}}^{\text{U}}\leqslant R_{\text{HD}}^{\text{U}})$ versus the user transmission power. $\alpha = 4$, $\theta = \frac{\pi}{8}$, and $P_{\text{SI}} = 200(53dBm)$.}
+		\label{fig:fig3}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.6\linewidth]{images/4.eps}
+			\caption{4.$\quad$ The probability $P(R_{\text{FD}}^{\text{D}}\leqslant R_{\text{HD}}^{\text{D}})$ versus the BS transmission power. $\alpha = 4$, $\theta = \frac{\pi}{8}$, and $P_{\text{U}} = 20\text{dBm}$, $d_0 = 100$.}
+			\label{fig:fig4}
+		\end{figure}
+\end{frame}
+	
+\begin{frame}{\textbf{{\LARGE{M}}ATHEMATICS}}
+	Chebyshev-Gauss quadrature(approximation):
+	\begin{equation}
+		\int_{-1}^{1}f(x)\mathrm{d}x \approx \sum_{j=1}^n \frac{\pi}{n} f(x_j)\sqrt{1-x_j^2},\, x_j = \cos(\frac{2j - 1}{2n}\pi).
+	\end{equation}	
+	Probability Facts: \begin{itemize}
+		\item $X\sim \mathcal{CN}(0,1) \Rightarrow\, \abs{X}^2\sim \mathcal{E}(1).$
+		\item $X_1,\cdots X_n$与$X$独立同分布, 有公共的概率密度$f(x)$. 记$S_n = \sum_{j=1}^n X_j$的概率密度函数为$f_{S_n}(x)$. 若$f(x)$的Laplace变换$\psi(s) = \mathcal{L}(f(x)) = \mathbb{E}\mathrm{e}^{-sX}$收敛, 则$f_{S_n}(x)$的Laplace变换为$[\psi(s)]^n$.
+		\item $X\sim$ Rayleigh, i.e. $f_X(x) = \frac{2x}{\Omega}\mathrm{e}^{-\frac{x^2}{\Omega}}\bm{1}_{(x\geqslant 0)}$, $\Omega = \mathbb{E}X^2$ $\Rightarrow$ $Y=X^2\sim \mathcal{E}(1/\Omega)$.
+	\end{itemize}
+	
+	
+\end{frame}
+
+\begin{frame}{\textbf{{\LARGE{M}}ATHEMATICS}}
+	Integral:
+	\begin{equation}
+		\begin{split}
+		\int_0^{\infty}x^k \mathrm{e}^{-a x^2-b x}\mathrm{d}x &= \frac{1}{2} a^{-\frac{k}{2}-1} \bigg(\sqrt{a} \Gamma \left(\frac{k+1}{2}\right)
+			\, _1F_1\left(\frac{k+1}{2};\frac{1}{2};\frac{b^2}{4 a}\right) \\
+			&\,\,\,\,\,\,-b \Gamma
+			\left(\frac{k}{2}+1\right) \, _1F_1\left(\frac{k}{2}+1;\frac{3}{2};\frac{b^2}{4
+				a}\right)\bigg)\\
+			&= \Gamma(k+1)\mathrm{e}^{b^2/8a}(2a)^{-(k+1)/2}D_{-k-1}(b/\sqrt{2a}).
+			\end{split}
+	\end{equation}
+	其中, $\,_1F_1$表示 Kummer's confluent hypergeometric function: \begin{equation}
+		\,_1F_1(a;b;z)\coloneqq \sum_{n=0}^{\infty} \frac{(a)_n}{(b)_n}\frac{z^n}{n!},\, (q)_n = \begin{cases}
+			1,&n = 0,\\
+			q(q+1)\cdots(q+n-1), &n>0.
+		\end{cases}
+	\end{equation}
+\end{frame}
+
+\begin{frame}{\textbf{{\LARGE{M}}ATHEMATICS}}
+	$D_{\nu}(\cdot)$是Parabolic cylinder functions(Whittaker \& Watson):
+	\begin{equation}
+		D_{\nu}(z)=\begin{cases}
+ \frac{1}{\sqrt{\pi}}2^{\nu/2}\mathrm{e}^{-z^2/4}\bigg( \cos(\frac{\pi}{2}\nu)\Gamma\Big(\frac{\nu+1}{2}\Big)\,_1F_1\Big(-\frac{\nu}{2};\frac{1}{2};\frac{z^2}{2}\Big)\\
+		+\sqrt{2}z\sin(\frac{\pi}{2}\nu)\Gamma\Big(\frac{\nu}{2}+1\Big)\,_1F_1\Big(\frac{1}{2} - \frac{\nu}{2};\frac{3}{2};\frac{z^2}{2}\Big)\bigg),~~&\nu > 0,\\
+		\mathrm{e}^{-z^2/4},~~&\nu=0,\\
+		\frac{2^{(k-1)/2}\mathrm{e}^{-z^2/4}}{\Gamma(k+1)}\bigg(\Gamma(\frac{k+1}{2})\,_1F_1\Big(\frac{k+1}{2};\frac{1}{2};\frac{z^2}{2}\Big) \\
+		-\sqrt{2}z\Gamma(\frac{k}{2}+1)\,_1F_1\Big(\frac{k}{2}+1;\frac{3}{2};\frac{z^2}{2}\Big)\bigg),~~&\nu=-k-1<0.
+		\end{cases}
+	\end{equation}
+\end{frame}
+
+\begin{frame}{使用MMA软件检查计算结果:}
+    \begin{figure}
+		\centering
+		\includegraphics[width=1.0\linewidth, trim=70 0 100 0,clip]{images/print.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{\textbf{{\LARGE{A}}SYMPTOTIC {\LARGE{E}}XPANSION}}
+    原文(4)、(21)式中$D_{-l}(\cdot)$的宗量都很大, 直接计算会造成浮点异常. 这里进行渐近展开, 当$z\to+\infty$时, 有
+    \begin{equation}
+        \mathrm{e}^{z^2/4}D_{-l}(z) = \begin{cases}
+        \frac{1}{z}-\frac{1}{z^3}+\frac{3}{z^5}-\frac{15}{z^7}+\frac{105}{z^9}-\frac{945}{z^{11}}+\frac{10395}{z^{13}}-\frac{135135}{z^{15}}+\cdots,&l=-1,\\
+        \frac{1}{z^2}-\frac{3}{z^4}+\frac{15}{z^6}-\frac{105}{z^8}+\frac{945}{z^{10}}-\frac{10395}{z^{12}}+\frac{135135}{z^{14}}+\cdots,&l=-2,\\
+        \frac{1}{z^3}-\frac{6}{z^5}+\frac{45}{z^7}-\frac{420}{z^9}+\frac{4725}{z^{11}}-\frac{62370}{z^{13}}+\frac{945945}{z^{15}}+\cdots,&l=-3,\\
+        \frac{1}{z^4}-\frac{10}{z^6}+\frac{105}{z^8}-\frac{1260}{z^{10}}+\frac{17325}{z^{12}}-\frac{270270}{z^{14}}+\cdots,&l=-4,\\
+        \frac{1}{z^5}-\frac{15}{z^7}+\frac{210}{z^9}-\frac{3150}{z^{11}}+\frac{51975}{z^{13}}-\frac{945945}{z^{15}}+\cdots,&l=-5,\\
+        \frac{1}{z^6}-\frac{21}{z^8}+\frac{378}{z^{10}}-\frac{6930}{z^{12}}+\frac{135135}{z^{14}}+\cdots,&l=-6,\\
+        \frac{1}{z^7}-\frac{28}{z^9}+\frac{630}{z^{11}}-\frac{13860}{z^{13}}+\frac{315315}{z^{15}}+\cdots,&l=-7,\\
+        \frac{1}{z^8}-\frac{36}{z^{10}}+\frac{990}{z^{12}}-\frac{25740}{z^{14}}+\cdots,&l=-8,\\
+        \frac{1}{z^9}-\frac{45}{z^{11}}+\frac{1485}{z^{13}}-\frac{45045}{z^{15}}+\cdots,&l=-9,\\
+        \frac{1}{z^{10}}-\frac{55}{z^{12}}+\frac{2145}{z^{14}}+\cdots, &l=-10,\\
+        \cdots, &\cdots.
+        \end{cases}
+    \end{equation}
+\end{frame}
+
+%\input{chapters/Chap1.tex}
+
+
+% \section*{Acknowledgments}
+
+
+\section{}
+\begin{frame}{}
+\centering
+\Huge\bfseries
+\textcolor{orange}{THANKS}
+\end{frame}
+\end{document}
